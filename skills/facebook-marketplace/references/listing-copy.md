@@ -2,102 +2,71 @@
 
 ## Claim boundary
 
-Draft buyer-facing copy only from facts that trace to seller confirmation,
-direct observation, or cited product evidence. Before finalizing, perform a
-field-to-source check for every buyer-facing claim:
+Every buyer-facing claim traces to a source in the record. Check each before
+finalizing:
 
-| Buyer-facing field | Required source check |
+| Claim | Acceptable source |
 | --- | --- |
-| Product identity and variant | Seller confirmation, readable label, or cited evidence tied to the item. |
-| Condition, wear, defects, and tests | Seller confirmation or direct observation. A source can never prove this unit's condition. |
-| Features and compatibility | Cited evidence for the confirmed model, plus seller or observation evidence when the claim concerns this unit, an included accessory, or a working setup. |
-| Included items | Seller confirmation or direct observation. |
-| Price and warranty | Seller-approved price; seller confirmation or cited terms for any warranty claim. |
-| Fulfillment, meetup, location, payment | Not description content. These live in the platform's delivery and location settings, the listing record's `seller.*` fields, project configuration, and buyer conversation. See "Transaction terms" below. |
+| Identity and variant | Seller confirmation, a readable label, or cited evidence tied to this item |
+| Condition, wear, defects, tests | Seller confirmation or direct observation only; no source can prove this unit's condition |
+| Features and compatibility | Cited evidence for the confirmed model, plus seller or observed evidence when the claim is about this unit, an included accessory, or a working setup |
+| Included items | Seller confirmation or direct observation |
+| Price | `pricing.approved` only; never imply a private floor |
+| Warranty | Seller confirmation or cited terms showing it exists and transfers |
 
-If a claim cannot trace to one of those sources, remove it, qualify it as an
-unknown for the seller, or ask the one consequential question that would
-support it. Do not use buyer copy to convert an inference into a fact.
+A claim without a source is removed, marked unknown for the seller, or becomes
+the one question that would support it. Copy never turns an inference into a
+fact.
 
-If the seller directs a buyer-facing claim after hearing that the evidence does
-not fully support it, state the concern once, then use the seller's wording and
-record the claim in the listing record as seller-directed together with the
-concern raised. Do not repeat the objection in later turns.
+If the seller directs a claim the evidence does not fully support, state the
+concern once, then use their wording and record it in the decision history as
+seller-directed with the concern raised. Do not repeat the objection later.
 
-## Title recipe
+## Title
 
-Put the exact product identity first. Add a meaningful confirmed variant or
-condition next. Add one credible differentiator only when space and evidence
-support it, such as a confirmed included accessory or stated test result.
+Exact product identity first, then a meaningful confirmed variant or condition,
+then at most one credible differentiator (a confirmed accessory or test result)
+if space allows. Searchable, plain, concise: no decorative symbols, clickbait,
+all-caps, keyword stuffing, or unsupported claims.
 
-A title must be searchable, immediately understandable, and concise. Do not
-use decorative symbols, clickbait, all-caps emphasis, keyword stuffing, or
-unsupported condition and feature claims.
+## Description
 
-## Description recipe
+Write these parts in order, omitting any the claim check does not support:
 
-Write in this order, omitting anything not supported by the field-to-source
-check:
+1. The item and its condition.
+2. Verified highlights that matter to a buyer.
+3. Included items.
+4. Testing, and material defects or limitations.
+5. The approved price.
+6. A plain close.
 
-1. Identify the item and state its condition.
-2. Give verified highlights that matter to a buyer.
-3. List included items.
-4. State testing and material defects or limitations.
-5. State the approved price.
-6. End with a plain close.
+The description is complete with those six parts and nothing else. Use short,
+ordinary sentences and name a limitation plainly.
 
-The description is complete when it contains those six parts and nothing else.
-Use short, ordinary sentences. Name a limitation plainly instead of hiding it
-behind promotional language or technical detail that does not help a buyer
-decide.
+Pickup, delivery, meetup, the seller's town, and payment are not description
+content: they live in the form's delivery and location settings, the record's
+`seller.*` fields, and buyer conversations. The description never mentions a
+payment method. If the seller explicitly asks for a transaction term in the
+description, add it as a final sentence after the price and note the request in
+the record.
 
-## Transaction terms
+## Natural language
 
-Pickup, delivery, meetup, the seller's town, and payment methods are handled
-by the platform's delivery-method and location settings, the listing record's
-`seller.fulfillment` and `seller.payment` fields, project configuration, and
-the conversation with each buyer. Record them there. When a seller explicitly
-asks for a transaction term in the description, add it as a final sentence
-after the price and note the request in the record.
+If the humanizer skill is installed, run it on the title and description drafts.
+Otherwise do the same pass yourself: audit every claim against its source,
+remove inflated or promotional phrasing, read for plain natural language, then
+recheck that facts and price are unchanged. Humanizing only rephrases; it never
+adds a claim, changes a price, or edits the record.
 
-Payment: the description mentions no payment method. Read the project's
-payment policy for use in buyer replies and handoff, never as a copy source.
+## Example
 
-## Humanizing buyer copy
+Illustrative facts only; never copy them into a real listing.
 
-**REQUIRED SUB-SKILL:** Use humanizer in embedded mode for buyer-facing title and description drafts when available.
-
-In embedded mode, make an internal draft, audit it for artificial or
-promotional phrasing and fabrication, then revise it into natural language.
-Humanization cannot alter facts, add claims, change prices, or edit YAML and
-research notes. It can only improve the phrasing of the buyer-facing title and
-description.
-
-If humanizer is unavailable, do the same internal sequence without requiring
-the named skill: draft from the traceable fields, audit every claim against its
-source, remove fabricated or inflated language, read for natural plain
-language, then recheck that facts and prices are unchanged. Keep this fallback
-portable and do not treat the unavailable sub-skill as a reason to block a
-truthful draft.
-
-## Complete example
-
-The facts in this worked example are illustrative only. Never treat them as the
-current listing record or copy them into buyer-facing fields unless current-item
-evidence independently supports each fact.
-
-### Factual input set
-
-- Seller-confirmed identity: Jabra Elite 8 Active Gen 2 earbuds, navy.
-- Seller-confirmed condition: both earbuds and the charging case work.
-- Seller-confirmed test: pairing and playback were tested.
-- Observed included items: earbuds, charging case, and USB-C cable.
-- Observed defect: light scuffs on the charging case, visible in photos.
-- Seller-confirmed fulfillment: pickup only (recorded in `seller.fulfillment`;
-  set in the platform's delivery settings).
-- Seller-approved price: $80.
-
-### Drafted buyer copy
+Input: seller-confirmed Jabra Elite 8 Active Gen 2 earbuds, navy; seller
+confirms both earbuds and the case work and that pairing and playback were
+tested; observed earbuds, charging case, and USB-C cable; observed light scuffs
+on the case; seller-confirmed pickup only (`seller.fulfillment`, set in the
+form); approved price $80.
 
 Title: `Jabra Elite 8 Active Gen 2 Earbuds, Navy, Tested`
 
@@ -108,8 +77,6 @@ Description:
 > and USB-C cable. The charging case has light scuffs, shown in the photos.
 > Price is $80. Please message with questions.
 
-The identity, test result, condition, included items, and price each trace
-directly to the factual input set. The pickup term is carried by the delivery
-settings and the record, not the description. The description does not add
-model features, battery claims, cleanliness claims, payment methods, or
-accessories beyond the recorded evidence.
+Every statement traces to the input. Pickup lives in the delivery settings, and
+the copy adds no model features, battery claims, cleanliness claims, payment
+methods, or accessories.
