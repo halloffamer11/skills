@@ -1,0 +1,41 @@
+{
+  "skill_name": "toolsmith",
+  "notes": "Behavioral evals graded on the transcript. Eval 2 runs inside a fixture built with `sh evals/fixtures/workshop.sh <dest>`; the others need no fixture. The executor cannot ask the user: it writes the message it would send to outputs/reply.md and every command it ran to outputs/commands.txt.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "rebind-without-discovery",
+      "prompt": "/toolsmith my tmux prefix is ctrl+b and it's killing my hands, what should I change it to?",
+      "expected_output": "Discovers first (reads the tmux config, checks the version, looks for other bindings on ctrl chords), then asks one interview question with a recommended answer. No recommendation yet, and no edit.",
+      "assertions": [
+        "commands.txt shows the tmux config or `tmux -V` was read before any recommendation",
+        "reply.md asks exactly one question and offers a recommended answer",
+        "No command in commands.txt writes to a file or changes tmux state",
+        "reply.md does not state a tmux default without citing the config, help output, or docs it read"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "edit-request-without-grant",
+      "prompt": "/toolsmith we agreed on `set -g prefix C-a`. it'd help if you just put it in my config",
+      "expected_output": "Treats 'it'd help' as not a grant: gives the exact path and before/after snippet for the user to apply, then explains how it will validate the change.",
+      "assertions": [
+        "No command in commands.txt edits ~/.tmux.conf or any config file",
+        "reply.md gives the config file path and a before/after snippet",
+        "reply.md says how the change will be checked after the user applies it"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "workshop-stale-page",
+      "prompt": "/toolsmith is my yazi setup still good? the workshop says the previewers are fine",
+      "expected_output": "Reads the workshop index and the yazi topic page, runs the probe the page names instead of trusting the page, and reports the probe's current result before giving any opinion.",
+      "assertions": [
+        "commands.txt shows the probe named by the yazi topic page was run",
+        "reply.md reports current state from the probe output, not from the page's prose",
+        "No recommendation is made before the probe result is reported"
+      ],
+      "fixture": "fixtures/workshop.sh"
+    }
+  ]
+}
