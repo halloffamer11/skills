@@ -26,7 +26,8 @@ choice to the seller (the user).
 
 ## Workflow
 
-Copy this checklist into the conversation and keep it current:
+Track progress with this checklist. Keep it in your own working notes, not in
+replies to the seller, who needs only the next decision:
 
 ```
 Listing progress:
