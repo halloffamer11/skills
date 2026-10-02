@@ -7,8 +7,14 @@
 # python3, when present, only reads claudeMdExcludes: an excluded file never
 # loads, so it is not checked.
 
+# Claude Code's memory docs (code.claude.com/docs/en/memory) say to target
+# under 200 lines per CLAUDE.md: longer files cost context and adherence.
 MAX_LINES=200
+# 200 lines at about 50 characters each; catches a file that stays under the
+# line count by packing paragraphs into long lines.
 MAX_BYTES=10240
+# A bullet past about three sentences holds several rules, and the model
+# follows only some of them (SKILL.md: "Write each line as one instruction").
 MAX_LINE_CHARS=300
 
 fired=0
