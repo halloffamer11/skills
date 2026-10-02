@@ -1,75 +1,57 @@
 # Intake
 
-## Minimum useful start
+## Provisional read
 
-Start from any available input: an item name, a folder, one or more photos, a
-link, or a short seller statement. Do not wait for a complete dossier.
+Start from any input: an item name, a folder, photos, a link, or a short seller
+statement. Do not wait for a complete dossier.
 
-Give a useful **provisional read** first. State what the input supports,
-separate observed facts from inferences and unknowns, update the listing record,
-label provenance, name the next useful deliverable, and ask at most one consequential seller question.
-The next deliverable may be a photo, a model label, a test result, an included-items confirmation, or a seller decision.
-Record verified item facts, seller constraints, and open questions without
-overwriting an unknown with a guess.
+Give a useful provisional read first: what the input supports, with observed
+facts, inferences, and unknowns kept apart; the next useful deliverable (a
+photo, a model label, a test result, an included-items confirmation, or a
+seller decision); and at most one consequential question. Write what you
+learned to the listing record with provenance labels.
 
-Surface only detail that materially explains the current recommendation or that
-the seller requested. Keep deeper evidence and provenance in the listing record.
+Example, from two photos of earbuds and a charging case: record the visible
+brand mark and items as `observed`, the apparent model as `inferred` while the
+label is unreadable, and condition, testing, and accessories as `unknown`. A
+good first reply: "The photos show earbuds and a case; the exact model is not
+confirmed yet. Next useful deliverable: a close photo of the model label. Do
+they power on and pair?"
 
-Never turn sparse input into claims about condition, cleanliness, functionality,
-or accessories. A visible item is observed; an apparent model is inferred until
-confirmed; an unshown or untested fact is unknown.
+## Gaps to look for
 
-## Deep intake
+An internal reference for spotting consequential gaps, never a questionnaire to
+present.
 
-Use this reference to recognize consequential gaps and choose the next action.
-It is an internal reference, not a questionnaire to present wholesale.
-
-| Area | Evidence or fact to seek | Why a gap can matter |
+| Area | Evidence to seek | Why a gap matters |
 | --- | --- | --- |
-| Identity | Brand, model, identifying label | Prevents a misleading item description. |
-| Variant | Generation, size, color, SKU, compatibility | Can change fit, value, or buyer expectations. |
-| Ownership | Authority to sell and any transferable status | Helps avoid a sale the seller cannot support. |
-| Condition | Seller assessment and visible wear | Supports truthful condition representation. |
-| Defects | Damage, limitations, repairs, missing parts | Avoids concealing a material limitation. |
-| Testing | What was tested, how, and result | Distinguishes working from untested. |
-| Included items | Accessories, packaging, chargers, adapters | Defines what the buyer receives. |
-| Proof of purchase | Relevant purchase or service facts | May substantiate ownership, age, or service history. |
-| Warranty | Transferability, remaining term, exclusions | Affects a buyer promise only when supportable. |
-| Fulfillment | Pickup, delivery, shipping, and constraints | Determines a viable listing and external actions. |
-| Timing | Availability, sale deadline, handoff window | Affects whether the listing can be acted on. |
-| Seller pricing priorities | Speed, floor, target, or willingness to negotiate | Guides a recommendation without treating it as buyer-facing. |
+| Identity | Brand, model, identifying label | Prevents a misleading description |
+| Variant | Generation, size, color, SKU, compatibility | Changes fit, value, or expectations |
+| Ownership | Authority to sell, transferable status | Avoids a sale the seller cannot support |
+| Condition | Seller assessment, visible wear | Supports a truthful condition |
+| Defects | Damage, limitations, repairs, missing parts | Avoids hiding a material limitation |
+| Testing | What was tested, how, result | Separates working from untested |
+| Included items | Accessories, packaging, chargers, adapters | Defines what the buyer gets |
+| Proof of purchase | Purchase or service facts | May support ownership, age, history |
+| Warranty | Transferability, remaining term, exclusions | A buyer promise only when supportable |
+| Fulfillment | Pickup, delivery, shipping, constraints | Determines viable listing options |
+| Timing | Availability, deadline, handoff window | Whether the listing can be acted on |
+| Pricing priorities | Speed, floor, target, negotiation | Guides the recommendation; never buyer-facing |
 
-Private documents may be inspected for relevant facts, but do not copy them into
-buyer-facing text or commit them without privacy review. Do not expose receipt
-identifiers, order numbers, contact details, or internal pricing and negotiation
-notes.
+Private documents such as receipts may be read for facts; see
+privacy-and-payment.md for what must never leave the record.
 
-## Condition and conversation rules
+## When to ask
 
-Ask immediately only when the missing answer changes truthful identification,
-safe handling, valuation, or an external action. Otherwise proceed
-provisionally and preserve the unknown in the record.
+Ask now only when the answer changes truthful identification, safe handling,
+valuation, or an external action. Otherwise proceed provisionally and keep the
+unknown in the record. Never front-load a list of questions; if no answer is
+needed yet, move to the next inspection, research, or draft step.
 
-Let each answer reshape the next question or action. Never front-load a fixed list of seller questions.
-If no answer is needed yet, move to the next useful inspection, research, or draft step instead.
+Classify each gap before letting it delay progress:
 
-## Readiness judgment
-
-Classify each gap before delaying progress:
-
-- A blocking unknown prevents truthful identification, safe handling, a required
+- **Blocking**: prevents truthful identification, safe handling, a required
   external action, or a credible material claim.
-- A **worthwhile improvement** would materially reduce buyer uncertainty or
-  improve a defensible value, but a truthful provisional listing can proceed.
-- **Nice-to-have polish** improves presentation only; it should not delay a
-  credible listing.
-
-## Example: photo-seeded record
-
-From two photos showing earbuds and a charging case, record the visible brand
-mark and the observed items as `observed`; record the apparent model as
-`inferred` if the label is unreadable. Set condition, testing, and included
-accessories to `unknown` rather than claiming they are clean, working, or
-complete. A useful first response can say: “The photos show earbuds and a case;
-the exact model is not yet confirmed. Next useful deliverable: a close photo of
-the model label. Do they power on and pair successfully?”
+- **Worthwhile improvement**: would materially reduce buyer uncertainty or
+  support a better price, but a truthful provisional listing can proceed.
+- **Polish**: presentation only; never delays a credible listing.
