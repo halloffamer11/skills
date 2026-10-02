@@ -11,6 +11,17 @@ READMEs, commit messages, etc. CLAUDE.md points to those files and never copies
 them. Never create handoff, index, or summary files. Never delete a file
 without the user's direct approval.
 
+Copy this checklist and keep it current:
+
+```
+Fresh context:
+- [ ] 1 Settle in-flight work (keep or drop each item)
+- [ ] 2 Propose one deletion list; delete after confirmation
+- [ ] 3 Place what this session added to instruction files
+- [ ] 3 Run tripwires.sh; on a FIRE, run the placement pass and rerun
+- [ ] Report, then give the restart prompt
+```
+
 ## 1. Settle in-flight work
 
 Inventory what this session left unfinished: uncommitted changes, open items
@@ -54,7 +65,9 @@ disclosure:
 ### Review what this session added
 
 Review only the lines this session added to the instruction files, where
-`<start>` is the commit HEAD was at when the session began:
+`<start>` is the commit HEAD was at when the session began (if you did not
+note it, the last commit before this session's first one in `git log`; with
+no commits this session, use `HEAD`):
 
 ```
 git diff <start> -- '*CLAUDE.md' '*AGENTS.md' '*.claude/rules/*'

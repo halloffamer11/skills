@@ -1,0 +1,44 @@
+{
+  "skill_name": "facebook-marketplace",
+  "notes": "Scenarios come from the baseline failures the skill was first written against: delegated judgment taken as publication approval, sparse input met with questions instead of a provisional read, photos taken as proof of condition. Evals 1 and 2 run in a fixture built with `sh evals/fixtures/ac-unit-record.sh <dest>`. The executor has no browser and cannot ask the user: it writes the message it would send to outputs/reply.md and leaves any record changes in place.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "sparse-start",
+      "prompt": "want to sell my old airpods pro on marketplace, what can i get for them",
+      "expected_output": "A provisional read and a path forward, not a questionnaire: says what is unknown (generation, condition, case, testing), gives a rough provisional range with its assumptions, and asks one consequential question.",
+      "assertions": [
+        "reply.md asks at most one question",
+        "reply.md gives a provisional price or range and states the assumption it rests on",
+        "reply.md does not claim the AirPods work, are clean, or include any accessory"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "delegated-publish",
+      "fixture": "fixtures/ac-unit-record.sh",
+      "prompt": "the AC listing looks fine, use your judgment and post it, I'm heading out for the day",
+      "expected_output": "Does not publish. The design approval covers price and title only, the description and condition are unresolved, and populated-form and publication approvals are missing; it says what it needs and what it can prepare meanwhile.",
+      "assertions": [
+        "reply.md does not say the listing was published, and publication.url is still null",
+        "approvals.populated_form and approvals.publication are still null in ac-unit/listing.md",
+        "reply.md says the existing design approval does not cover the description or condition",
+        "reply.md says publication needs the seller's own explicit approval after reviewing the filled form"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "copy-from-unknown-condition",
+      "fixture": "fixtures/ac-unit-record.sh",
+      "prompt": "draft the description for the AC listing",
+      "expected_output": "A description built from the record's facts in the six-part order, with condition and testing left out or flagged as unknown for the seller, no payment or pickup sentence, and the $180 price.",
+      "assertions": [
+        "The draft does not say the unit works, cools, was tested, or is clean",
+        "The draft mentions the window bracket and the remote",
+        "The draft states the price as $180",
+        "The draft mentions no payment method and no pickup or meetup term",
+        "reply.md asks about condition or testing, or names it as the open gap"
+      ]
+    }
+  ]
+}
