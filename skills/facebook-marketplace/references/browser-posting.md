@@ -1,111 +1,78 @@
-# Browser posting procedure
+# Browser posting
 
-## Entry precondition
+## Before entry
 
-Begin only when `approvals.listing_design` is a current, affirmative approval
-whose recorded scope covers the final price, title, description, selected media
-and their order, fulfillment, condition, and every known platform choice. Read
-the approval entry's scope, decision, actor, and time alongside the proposed
-values. A recommendation is not approval.
-
-Before form entry, compare the approved design with the canonical listing
-record. If price, title, description, photo set or order, included items,
-condition, fulfillment, or a required Facebook field has changed, the design
-approval is stale for the affected action. Preserve the draft and obtain a
-renewed listing-design approval; do not silently carry the earlier approval
-forward.
+Start only with a current gate A approval (see SKILL.md) whose scope covers
+every value you will enter. Compare the approved design with the listing record;
+if anything it covers has changed, the approval is stale: keep the draft and ask
+again.
 
 ## Inspect the live form
 
-Use an available signed-in browser capability by default. Inspect the live form
-after opening it: labels, choices, required indicators, validation, visible
-restrictions, and the review/publish controls are the authoritative current
-interface. Do not rely on a permanent Facebook field schema or a particular
-browser, automation tool, or page layout.
+Use an available signed-in browser. The live form is the authority: read its
+labels, choices, required indicators, validation, restrictions, and review and
+publish controls each time. Do not rely on a remembered field schema, a
+particular automation tool, or a page layout.
 
-Record only what is visible or entered. If the form offers a consequential
-choice that the approved design did not resolve--for example a category,
-condition meaning, shipping commitment, location visibility setting, payment
-or delivery term, or audience setting--stop and ask for a decision. Do not
-choose on the seller's behalf.
+If the form offers a consequential choice the approved design did not resolve
+(category, condition meaning, shipping commitment, location visibility, payment
+or delivery term, audience), stop and ask. Do not choose for the seller.
 
-## Mapping and reversible entry
+## Enter and map values
 
-The current listing-design approval authorizes only reversible form entry. For
-each value, make a mapping record in the listing record or posting notes:
+Gate A permits reversible entry of resolved values only. Do not resolve an
+unknown, accept an unexpected consequential default, enter a claim the record
+cannot support, or enter private notes, research, receipt identifiers, contact
+details, or pricing floors. Record a mapping in the record's Form mapping
+section:
 
-| Canonical value | Facebook field used | Normalization or platform-generated change |
+| Record value | Form field observed | Normalization or platform change |
 | --- | --- | --- |
-| `listing.title` | Observed title field label | Exact entered text; any truncation or normalization. |
-| `pricing.approved` and `pricing.currency` | Observed price field label | Exact entered amount and displayed currency or formatting. |
-| `listing.description` | Observed description field label | Exact entered text; any truncation or normalization. |
-| `listing.category` | Observed category selector | Selected path; note a suggested or substituted category. |
-| `listing.condition` | Observed condition selector | Selected visible label and any platform interpretation. |
-| `seller.fulfillment` | Observed delivery, shipping, or pickup controls | Exact selected options and any resulting platform text. |
-| `seller.postal_code` | Observed location field | Exact locality level displayed; do not record or expose more than necessary. |
-| `media.selected` | Observed photo/video uploader | Approved filenames in order; note reorder, rejection, or processing. |
+| `listing.title` | Title field label | Exact text entered; truncation |
+| `pricing.approved`, `pricing.currency` | Price field label | Amount entered; displayed currency or formatting |
+| `listing.description` | Description field label | Exact text entered; truncation |
+| `listing.category` | Category selector | Path selected; suggested or substituted category |
+| `listing.condition` | Condition selector | Label selected; platform interpretation |
+| `seller.fulfillment` | Delivery, shipping, pickup controls | Options selected; resulting platform text |
+| `seller.postal_code` | Location field | Locality level displayed; expose no more than needed |
+| `media.selected` | Photo and video uploader | Approved files in order; reorder, rejection, processing |
 
-Fill only a value or choice that is already resolved by the approved design.
-Do not resolve an unknown, accept an unanticipated consequential default, or
-make a claim the record cannot support. Do not enter private notes, research,
-receipt identifiers, contact details, or unpublished pricing floors.
+Upload only the files in `media.selected`, in order. Confirm the visible order
+after upload and record any reorder, crop, compression, or rejection. Any file
+outside the approved set needs a new gate A approval.
 
-### Media upload
+## Preflight
 
-Upload only the approved selected source files or approved derived files named
-in `media.selected`, in the approved order. Confirm the visible post-upload
-order and record any upload-side reorder, crop, compression, rejection, or
-other platform-generated change. A file that was not selected or a material
-change to the selected set requires renewed design approval before use.
+After entry, give a concise **Preflight**: title, displayed price and currency,
+category, condition, fulfillment, visible location level, media count and
+order, and every normalization, warning, restriction, or unresolved choice.
+Include a screenshot when it is safe to keep (see privacy-and-payment.md).
+Then ask for gate B on that visible state, and after it, for gate C. If any
+mapped field changes after review, repeat the preflight and gate B.
 
-## Preflight and populated-form review
+## Completion
 
-After reversible entry, provide concise **Preflight** output: title, displayed
-price and currency, category, condition, fulfillment, visible location level,
-media count and order, and every observed normalization, warning, restriction,
-or unresolved choice. Include a visible form review or screenshot when
-practical and safe to retain; redact or avoid private information.
-
-The seller must review the populated form and record a current affirmative
-`approvals.populated_form` decision for that visible state. This approval says
-the form is ready for publication. It does not authorize clicking Publish.
-If any mapped field or visible platform change differs after review, repeat the
-preflight and obtain a renewed populated-form approval.
-
-## Separate publication decision
-
-Form entry, populated-form review, and final publication are distinct external
-actions. After the populated-form approval, request a **separate explicit**,
-current publication decision recorded in `approvals.publication`. Do not infer
-it from delegated judgment, a listing-design approval, populated-form approval,
-or the seller being unavailable. Do not click the platform's publication or
-confirmation control without that decision.
-
-## Completion record
-
-After publication succeeds, capture the listing URL in `publication.url`, the
-publication timestamp in `publication.published_at`, the final displayed price,
-and every platform-generated change observed at publication. Preserve the
-field mapping, final review evidence when safely retainable, and any relevant
-platform confirmation text. Report completion without exposing private account
-or location details.
+After publication succeeds, record `publication.url`, `publication.published_at`,
+the final displayed price, and any platform change seen at publication. Keep
+the mapping and confirmation text. Report completion without exposing private
+account or location details.
 
 ## Failure recovery
 
-Never bypass a login challenge, account-security check, confirmation screen,
-warning, category restriction, or platform limitation. Preserve the completed
-reversible work and give a recoverable failure report:
+Never work around a safeguard. Keep completed reversible work and stop:
 
-| Failure | Safe recovery |
+| Failure | Recovery |
 | --- | --- |
-| Login or expired session | Stop; state that sign-in is required. The seller completes sign-in in their browser, then re-inspect the form and its values. |
-| Account security check | Stop; do not handle credentials, codes, identity checks, or recovery flows. Ask the seller to complete the platform's security step. |
-| Unsupported category or required category change | Record the visible restriction and proposed alternatives. Obtain an explicit decision and renewed approval if the selection or buyer-facing design changes. |
-| UI change or an unfamiliar consequential field | Record the visible labels and state. Do not guess a mapping; ask the seller to resolve the choice or approve an updated design. |
-| Upload failure | Preserve approved file paths and the visible error. Retry only the same approved file when the error is transient; otherwise stop for a changed-file or changed-order decision. |
-| Browser loss, crash, or session interruption | Treat the populated state as unverified. Reopen the live form, inspect every mapped field and media order, then repeat Preflight and obtain the needed current approval. |
-| Platform warning or restriction | Preserve the exact visible warning and stop. The seller decides whether to satisfy it, change the listing, or abandon publication; never work around it. |
+| Login or expired session | Say sign-in is needed; after the seller signs in, re-inspect the form and its values |
+| Account security check | Do not handle credentials, codes, or identity checks; the seller completes the step |
+| Category restriction or required change | Record the restriction and alternatives; get a decision, and a new gate A if the design changes |
+| UI change or unfamiliar consequential field | Record the visible labels and state; do not guess a mapping |
+| Upload failure | Keep the error; retry the same approved file only if the error looks transient |
+| Browser crash or lost session | Treat the filled state as unverified: reopen, re-inspect every field and the media order, repeat preflight and gate B |
+| Platform warning | Keep the exact text and stop; the seller decides whether to satisfy it, change the listing, or abandon |
 
-Each recovery report names completed work, preserved artifacts, the exact
-blocker, the safest next action, and any manual seller step. A recovery never
-converts a prior approval into publication authority.
+The recovery report names: completed work; preserved artifacts (record
+location, approved media and order, mapping, safe screenshots); the exact
+blocker as observed, without guessing a cause; the safest next action; and any
+step only the seller can take. A recovery never turns an earlier approval into
+publication authority.
