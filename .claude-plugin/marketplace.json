@@ -1,0 +1,26 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "halloffamer11",
+  "description": "Personal agent skills and delegate, installable as plugins.",
+  "owner": {
+    "name": "halloffamer11",
+    "url": "https://github.com/halloffamer11"
+  },
+  "plugins": [
+    {
+      "name": "personal",
+      "source": "./",
+      "description": "The skills in this repo: facebook-marketplace, fresh-context and toolsmith.",
+      "category": "productivity"
+    },
+    {
+      "name": "delegate",
+      "source": {
+        "source": "github",
+        "repo": "halloffamer11/delegate"
+      },
+      "description": "Routes worker jobs to external or native models by capability and remaining subscription usage, plus council. Needs one-time machine setup: run `delegate setup` after install.",
+      "category": "development"
+    }
+  ]
+}
