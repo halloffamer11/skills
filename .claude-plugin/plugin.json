@@ -1,0 +1,11 @@
+{
+  "name": "personal",
+  "description": "Personal agent skills: facebook-marketplace, fresh-context and toolsmith.",
+  "author": {
+    "name": "halloffamer11",
+    "url": "https://github.com/halloffamer11"
+  },
+  "homepage": "https://github.com/halloffamer11/skills",
+  "repository": "https://github.com/halloffamer11/skills",
+  "keywords": ["skills"]
+}
