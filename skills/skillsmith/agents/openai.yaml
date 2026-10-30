@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skillsmith"
+  short_description: "Design, test and maintain agent skills, evals first"
+  default_prompt: "Use $skillsmith to decide whether this should be a skill and, if so, build it evals first."
