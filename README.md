@@ -7,6 +7,7 @@ machine setup.
 |---|---|
 | `facebook-marketplace` | Research, price, draft and post Facebook Marketplace listings |
 | `fresh-context` | Wrap up a session so a fresh one can resume from files alone |
+| `skillsmith` | Design, test and maintain agent skills, evals first (run it by name) |
 | `toolsmith` | Consulting on machine configuration, dotfiles and agent workflow |
 
 ## Install
