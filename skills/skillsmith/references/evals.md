@@ -40,7 +40,7 @@ Fixtures never touch a real account, site or machine. Mock external actions; pas
 
 ## The executor
 
-The executor runs one case in a clean context (a subagent, a fresh session or a delegate lane). It cannot ask the user, so the `notes` must say:
+The executor runs one case in a clean context (a subagent, a fresh session or another model). It cannot ask the user, so the `notes` must say:
 
 - what it writes: the message it would send to `outputs/reply.md`, each command it ran to `outputs/commands.txt`, any question it would have asked to `outputs/questions.md`;
 - what the `session` pre-approves, and that nothing else is approved.

@@ -45,7 +45,7 @@ Ask: is a skill the right container? Take the first row that fits.
 | Needed in one directory, or for one file pattern | A nested CLAUDE.md, or a scoped rule |
 | A deterministic check or transform | A script, maybe called by an existing skill |
 | A procedure the agent runs on demand, that works after a plain `skills add` | A skill in the skills repo |
-| A procedure that needs machine setup | Its own repo (as delegate did) |
+| A procedure that needs machine setup | Its own repo |
 
 Then pick the invocation. Default to user-invoked
 (`disable-model-invocation: true`) when the user starts it by name. Use
@@ -79,7 +79,7 @@ change).
 ## 3. Baseline
 
 Run 2 or 3 realistic prompts without the skill, in a clean context: a
-subagent, a fresh session, or a `delegate` lane when the user asks for one.
+subagent, a fresh session, or another model when the user asks for one.
 For Improve, the baseline is the current version: copy it to a scratch folder
 first.
 
