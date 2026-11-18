@@ -167,7 +167,7 @@ start with that slash command, with nothing in front of it (it expands only
 when it leads the message), in `plugin:skill` form for a plugin skill, and
 the context follows:
 
-`/mattpocock-skills:implement ticket 07b from .scratch/delegate-redesign/issues/07b-setup-tui.md`
+`/mattpocock-skills:implement ticket 07b from .scratch/<effort>/issues/07b-<slug>.md`
 
 Find such skills with `grep -l 'disable-model-invocation: true'
 <skills-dir>/*/SKILL.md`. Plugin skills are under
