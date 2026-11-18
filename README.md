@@ -5,6 +5,7 @@ machine setup.
 
 | Skill | Use |
 |---|---|
+| `council` | Multi-model council for a critical decision, in any harness (run it by name) |
 | `facebook-marketplace` | Research, price, draft and post Facebook Marketplace listings |
 | `fresh-context` | Wrap up a session so a fresh one can resume from files alone |
 | `skillsmith` | Design, test and maintain agent skills, evals first (run it by name) |
@@ -12,22 +13,18 @@ machine setup.
 
 ## Install
 
-This repo is also a plugin marketplace named `halloffamer11`. It lists two plugins:
-`personal` (the skills above) and `delegate` (from
-[halloffamer11/delegate](https://github.com/halloffamer11/delegate), with `delegate`
-and `council`). The `delegate` plugin needs one-time machine setup: run
-`delegate setup` after you install it.
+This repo is also a plugin marketplace named `halloffamer11`. It lists one plugin,
+`personal`, with the skills above.
 
 | Environment | Install | Update |
 |---|---|---|
-| Claude Code | `claude plugin marketplace add halloffamer11/skills`, then `claude plugin install personal@halloffamer11` and `delegate@halloffamer11` (or `/plugin` in a session) | `claude plugin marketplace update halloffamer11`, then `claude plugin update <plugin>@halloffamer11`; or turn on auto-update for the marketplace in `/plugin` |
-| Codex | `codex plugin marketplace add halloffamer11/skills`, then `codex plugin add personal@halloffamer11` and `delegate@halloffamer11` (or `/plugins` in a session) | `codex plugin marketplace upgrade halloffamer11` |
+| Claude Code | `claude plugin marketplace add halloffamer11/skills`, then `claude plugin install personal@halloffamer11` (or `/plugin` in a session) | `claude plugin marketplace update halloffamer11`, then `claude plugin update personal@halloffamer11`; or turn on auto-update for the marketplace in `/plugin` |
+| Codex | `codex plugin marketplace add halloffamer11/skills`, then `codex plugin add personal@halloffamer11` (or `/plugins` in a session) | `codex plugin marketplace upgrade halloffamer11` |
 | Gemini CLI | `gemini extensions install https://github.com/halloffamer11/skills` (personal skills only) | `gemini extensions update personal` |
 | ChatGPT | `sh scripts/zip-skills.sh`, then upload each `dist/<skill>.zip` in Skills, Create, Upload from your computer (personal skills only) | upload the new zip again |
 | Any other agent | the skills CLI, below | `npx skills update -g` |
 
-ChatGPT cannot install from a repository, and it has no shell on your machine, so
-delegate does not run there.
+ChatGPT cannot install from a repository, and it has no shell on your machine.
 
 Plugin versions follow the repo's commits: no plugin pins a `version`, so an update
 picks up whatever is on `main`. Install a skill one way per machine. A plugin and a
