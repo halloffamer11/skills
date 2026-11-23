@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "halloffamer11",
-  "description": "Personal agent skills, installable as a plugin.",
+  "description": "Core Pack skills, installable as a plugin.",
   "owner": {
     "name": "halloffamer11",
     "url": "https://github.com/halloffamer11"
@@ -10,7 +10,7 @@
     {
       "name": "personal",
       "source": "./",
-      "description": "The skills in this repo: council, facebook-marketplace, fresh-context, skillsmith and toolsmith.",
+      "description": "Core Pack skills: council, fleet, fresh-context, skillsmith and toolsmith.",
       "category": "productivity"
     }
   ]
