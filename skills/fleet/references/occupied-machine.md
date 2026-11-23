@@ -38,10 +38,13 @@ backup=$(mkdir -p "$backup_root" && mktemp -d "$backup_root/$(date +%Y%m%d)-XXXX
 Compare an edited skill before continuing. For a restore trial set `skill` to an actual path relative to HOME (for example `.agents/skills/toolsmith`), then run these commands. A clean comparison prints nothing. For a linked skill, the link tree preserves the original target spelling and the contents tree holds a standalone copy.
 
 ```sh
-: "${backup:?run step 3 first}"
-trial=$(mktemp -d)
-cp -pR "$backup/contents/$skill" "$trial/restored"
-diff -r "$HOME/$skill" "$trial/restored"
+if [ -d "${backup:-}" ]; then
+  trial=$(mktemp -d)
+  cp -pR "$backup/contents/$skill" "$trial/restored"
+  diff -r "$HOME/$skill" "$trial/restored"
+else
+  echo "No backup folder. Run step 3 first." >&2
+fi
 ```
 
 4. Back up only the user MCP entries the owner recognizes. Run this Python 3.11+ command in the same terminal. It shows names, then asks about each. Include user-installed ad-hoc servers. Skip Claude connectors, plugin entries and bundled servers, including Codex's bundled servers. Each JSON backup holds the original configuration fields and can contain credentials. The backup folder is private (mode 700, from `mktemp -d`), and the command runs with `umask 077`. Keep it private; use it locally to reconstruct a chosen entry with its Harness CLI.
@@ -87,8 +90,9 @@ PY
 ```sh
 chezmoi execute-template '{{ (includeTemplate "declarations" . | fromJson).profileLinks | join "\n" }}'
 # path is the selected path relative to HOME
-: "${backup:?run step 3 first}"
-if [ -f "$HOME/$path" ] && [ ! -L "$HOME/$path" ]; then
+if [ ! -d "${backup:-}" ]; then
+  echo "No backup folder. Run step 3 first." >&2
+elif [ -f "$HOME/$path" ] && [ ! -L "$HOME/$path" ]; then
   mkdir -p "$backup/profiles/$(dirname "$path")" &&
     mv "$HOME/$path" "$backup/profiles/$path"
 fi
