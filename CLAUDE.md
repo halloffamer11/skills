@@ -1,8 +1,9 @@
 # Skills
 
-Personal agent skills, installed on each machine with the `skills` CLI
-(`npx skills add halloffamer11/skills -g`) and refreshed with `npx skills update -g`.
-The repo is also a plugin marketplace for Claude Code and Codex. `README.md` has the install line for each environment.
+The public core Pack holds council, fleet, fresh-context, skillsmith and toolsmith.
+The personal Pack lives in `halloffamer11/skills-personal`. External skills are
+installed from upstream. Fleet Machines use the skills CLI for all three Harnesses.
+The repo also serves existing plugin installations. See `README.md`.
 Split out of `halloffamer11/dotfiles` on 2026-10-01 with its history. The repo is public.
 
 ## Rules
@@ -14,7 +15,7 @@ Split out of `halloffamer11/dotfiles` on 2026-10-01 with its history. The repo i
   run `npx skills update -g` there.
 - The manifests are `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`
   (Claude Code; Codex and the skills CLI read them too), `.agents/plugins/marketplace.json`
-  (Codex, which cannot read a `github` source) and `gemini-extension.json`. A new skill
-  needs no manifest change; a new plugin goes in both marketplace files. Check with
+  (Codex, which cannot read a `github` source) and `gemini-extension.json`. Keep their skill
+  descriptions current. A new plugin goes in both marketplace files. Check with
   `claude plugin validate .`. No plugin pins a `version`, so installs follow `main`.
 - Never commit secrets or personal data; anyone can install from this repo.
