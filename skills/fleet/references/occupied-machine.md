@@ -8,10 +8,9 @@ These are owner-run commands. Rehearse in a throwaway home first. Keep the dated
 
 ```sh
 backup_root="${XDG_STATE_HOME:-$HOME/.local/state}/fleet/backups"
-mkdir -p "$backup_root"
-backup=$(mktemp -d "$backup_root/$(date +%Y%m%d)-XXXXXX")
-export backup
-(
+backup=$(mkdir -p "$backup_root" && mktemp -d "$backup_root/$(date +%Y%m%d)-XXXXXX") &&
+  [ -d "$backup" ] && export backup || { backup=; echo "No backup folder. Stop here." >&2; }
+[ -n "$backup" ] && (
   # Inside the subshell only: a failure does not close the terminal, and the
   # strict umask does not reach the later chezmoi apply.
   set -eu
@@ -39,6 +38,7 @@ export backup
 Compare an edited skill before continuing. For a restore trial set `skill` to an actual path relative to HOME (for example `.agents/skills/toolsmith`), then run these commands. A clean comparison prints nothing. For a linked skill, the link tree preserves the original target spelling and the contents tree holds a standalone copy.
 
 ```sh
+: "${backup:?run step 3 first}"
 trial=$(mktemp -d)
 cp -pR "$backup/contents/$skill" "$trial/restored"
 diff -r "$HOME/$skill" "$trial/restored"
@@ -51,7 +51,9 @@ diff -r "$HOME/$skill" "$trial/restored"
 import json, os, tomllib
 from pathlib import Path
 
-home, dest = Path.home(), Path(os.environ["backup"])
+home, dest = Path.home(), Path(os.environ.get("backup", ""))
+if not dest.is_absolute() or not dest.is_dir():
+    raise SystemExit("No backup folder. Run step 3 first.")
 files = [
     ("claude", ".claude.json", "mcpServers"),
     ("codex", ".codex/config.toml", "mcp_servers"),
@@ -85,6 +87,7 @@ PY
 ```sh
 chezmoi execute-template '{{ (includeTemplate "declarations" . | fromJson).profileLinks | join "\n" }}'
 # path is the selected path relative to HOME
+: "${backup:?run step 3 first}"
 if [ -f "$HOME/$path" ] && [ ! -L "$HOME/$path" ]; then
   mkdir -p "$backup/profiles/$(dirname "$path")" &&
     mv "$HOME/$path" "$backup/profiles/$path"
